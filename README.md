@@ -1,7 +1,7 @@
 # 🎓 Plateforme de Recrutement Sémantique - LYMZ
 
-> Projet Web Sémantique - BDIA3 Semestre 5  
-> ENSA Agadir - 2024/2025
+> Projet Web Sémantique - BDIA3 
+> ENSA Tétouan - 2025/2026
 
 ## 📋 Description
 
@@ -142,4 +142,4 @@ Projet académique - ENSA Agadir © 2024-2025
 ## 🙏 Remerciements
 
 - Pr. Nisrine EL AYAT - Encadrement du projet
-- ENSA Agadir - Formation BDIA3
+
