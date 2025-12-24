@@ -1,0 +1,355 @@
+@prefix : <http://www.semanticweb.org/ontologies/cv#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/ontologies/cv> rdf:type owl:Ontology ;
+    rdfs:label "CV Ontology"@en ;
+    rdfs:comment "Ontologie pour la modélisation de CV et la sélection de candidats"@fr .
+
+#################################################################
+#    Classes
+#################################################################
+
+:Person rdf:type owl:Class ;
+    rdfs:label "Person"@en , "Personne"@fr ;
+    rdfs:comment "Une personne candidate à un poste"@fr .
+
+:Skill rdf:type owl:Class ;
+    rdfs:label "Skill"@en , "Compétence"@fr ;
+    rdfs:comment "Une compétence technique ou transversale"@fr .
+
+:TechnicalSkill rdf:type owl:Class ;
+    rdfs:subClassOf :Skill ;
+    rdfs:label "Technical Skill"@en , "Compétence Technique"@fr .
+
+:SoftSkill rdf:type owl:Class ;
+    rdfs:subClassOf :Skill ;
+    rdfs:label "Soft Skill"@en , "Compétence Transversale"@fr .
+
+:Degree rdf:type owl:Class ;
+    rdfs:label "Degree"@en , "Diplôme"@fr ;
+    rdfs:comment "Un diplôme ou certification"@fr .
+
+:Experience rdf:type owl:Class ;
+    rdfs:label "Experience"@en , "Expérience"@fr ;
+    rdfs:comment "Une expérience professionnelle"@fr .
+
+:Profile rdf:type owl:Class ;
+    rdfs:label "Profile"@en , "Profil"@fr ;
+    rdfs:comment "Un profil professionnel (DataScientist, Developer, etc.)"@fr .
+
+:DataScientist rdf:type owl:Class ;
+    rdfs:subClassOf :Profile ;
+    rdfs:label "Data Scientist"@en .
+
+:WebDeveloper rdf:type owl:Class ;
+    rdfs:subClassOf :Profile ;
+    rdfs:label "Web Developer"@en , "Développeur Web"@fr .
+
+:BackendDeveloper rdf:type owl:Class ;
+    rdfs:subClassOf :Profile ;
+    rdfs:label "Backend Developer"@en .
+
+:FullStackDeveloper rdf:type owl:Class ;
+    rdfs:subClassOf :Profile ;
+    rdfs:label "Full Stack Developer"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+:hasSkill rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Skill ;
+    rdfs:label "has skill"@en , "possède compétence"@fr .
+
+:hasDegree rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Degree ;
+    rdfs:label "has degree"@en , "possède diplôme"@fr .
+
+:hasExperience rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Experience ;
+    rdfs:label "has experience"@en , "possède expérience"@fr .
+
+:hasProfile rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Profile ;
+    rdfs:label "has profile"@en , "a profil"@fr .
+
+:workedAt rdf:type owl:ObjectProperty ;
+    rdfs:domain :Experience ;
+    rdfs:label "worked at"@en , "a travaillé chez"@fr .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+:name rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:string ;
+    rdfs:label "name"@en , "nom"@fr .
+
+:email rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:string ;
+    rdfs:label "email"@en .
+
+:skillName rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Skill ;
+    rdfs:range xsd:string ;
+    rdfs:label "skill name"@en , "nom compétence"@fr .
+
+:skillLevel rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Skill ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Niveau: Débutant, Intermédiaire, Avancé, Expert"@fr .
+
+:degreeName rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Degree ;
+    rdfs:range xsd:string ;
+    rdfs:label "degree name"@en , "nom diplôme"@fr .
+
+:degreeLevel rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Degree ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Niveau: Bac, Bac+2, Bac+3, Bac+5, Doctorat"@fr .
+
+:yearObtained rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Degree ;
+    rdfs:range xsd:integer ;
+    rdfs:label "year obtained"@en , "année obtention"@fr .
+
+:jobTitle rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Experience ;
+    rdfs:range xsd:string ;
+    rdfs:label "job title"@en , "poste"@fr .
+
+:company rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Experience ;
+    rdfs:range xsd:string ;
+    rdfs:label "company"@en , "entreprise"@fr .
+
+:duration rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Experience ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Durée en mois"@fr .
+
+:startYear rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Experience ;
+    rdfs:range xsd:integer .
+
+:endYear rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Experience ;
+    rdfs:range xsd:integer .
+
+:yearsOfExperience rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:integer ;
+    rdfs:label "years of experience"@en , "années d'expérience"@fr .
+
+#################################################################
+#    Instances - Compétences
+#################################################################
+
+:Python rdf:type :TechnicalSkill ;
+    :skillName "Python" .
+
+:MachineLearning rdf:type :TechnicalSkill ;
+    :skillName "Machine Learning" .
+
+:DeepLearning rdf:type :TechnicalSkill ;
+    :skillName "Deep Learning" .
+
+:NLP rdf:type :TechnicalSkill ;
+    :skillName "Natural Language Processing" .
+
+:SQL rdf:type :TechnicalSkill ;
+    :skillName "SQL" .
+
+:Java rdf:type :TechnicalSkill ;
+    :skillName "Java" .
+
+:JavaScript rdf:type :TechnicalSkill ;
+    :skillName "JavaScript" .
+
+:HTML rdf:type :TechnicalSkill ;
+    :skillName "HTML" .
+
+:CSS rdf:type :TechnicalSkill ;
+    :skillName "CSS" .
+
+:React rdf:type :TechnicalSkill ;
+    :skillName "React" .
+
+:NodeJS rdf:type :TechnicalSkill ;
+    :skillName "Node.js" .
+
+:Docker rdf:type :TechnicalSkill ;
+    :skillName "Docker" .
+
+:Git rdf:type :TechnicalSkill ;
+    :skillName "Git" .
+
+:TensorFlow rdf:type :TechnicalSkill ;
+    :skillName "TensorFlow" .
+
+:Pandas rdf:type :TechnicalSkill ;
+    :skillName "Pandas" .
+
+:Communication rdf:type :SoftSkill ;
+    :skillName "Communication" .
+
+:TeamWork rdf:type :SoftSkill ;
+    :skillName "Travail d'équipe" .
+
+:Leadership rdf:type :SoftSkill ;
+    :skillName "Leadership" .
+
+#################################################################
+#    Instances - Diplômes
+#################################################################
+
+:MasterDataScience rdf:type :Degree ;
+    :degreeName "Master en Data Science" ;
+    :degreeLevel "Bac+5" .
+
+:MasterInformatique rdf:type :Degree ;
+    :degreeName "Master en Informatique" ;
+    :degreeLevel "Bac+5" .
+
+:LicenceInformatique rdf:type :Degree ;
+    :degreeName "Licence en Informatique" ;
+    :degreeLevel "Bac+3" .
+
+:DUTInformatique rdf:type :Degree ;
+    :degreeName "DUT Informatique" ;
+    :degreeLevel "Bac+2" .
+
+:IngenieurInformatique rdf:type :Degree ;
+    :degreeName "Diplôme d'Ingénieur en Informatique" ;
+    :degreeLevel "Bac+5" .
+
+#################################################################
+#    Instances - Candidats
+#################################################################
+
+:Candidate1 rdf:type :Person ;
+    :name "Alice Dupont" ;
+    :email "alice.dupont@email.com" ;
+    :yearsOfExperience 5 ;
+    :hasSkill :Python , :MachineLearning , :DeepLearning , :SQL , :TensorFlow , :Pandas ;
+    :hasSkill :Communication , :TeamWork ;
+    :hasDegree :MasterDataScience1 ;
+    :hasExperience :Exp1 ;
+    :hasProfile :DataScientist .
+
+:MasterDataScience1 rdf:type :Degree ;
+    :degreeName "Master Data Science" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2019 .
+
+:Exp1 rdf:type :Experience ;
+    :jobTitle "Data Scientist" ;
+    :company "TechCorp" ;
+    :duration 36 ;
+    :startYear 2020 ;
+    :endYear 2023 .
+
+:Candidate2 rdf:type :Person ;
+    :name "Bob Martin" ;
+    :email "bob.martin@email.com" ;
+    :yearsOfExperience 3 ;
+    :hasSkill :JavaScript , :HTML , :CSS , :React , :NodeJS , :Git ;
+    :hasSkill :TeamWork ;
+    :hasDegree :LicenceInfo1 ;
+    :hasExperience :Exp2 ;
+    :hasProfile :FullStackDeveloper .
+
+:LicenceInfo1 rdf:type :Degree ;
+    :degreeName "Licence Informatique" ;
+    :degreeLevel "Bac+3" ;
+    :yearObtained 2020 .
+
+:Exp2 rdf:type :Experience ;
+    :jobTitle "Développeur Full Stack" ;
+    :company "WebAgency" ;
+    :duration 36 ;
+    :startYear 2021 ;
+    :endYear 2024 .
+
+:Candidate3 rdf:type :Person ;
+    :name "Claire Rousseau" ;
+    :email "claire.rousseau@email.com" ;
+    :yearsOfExperience 7 ;
+    :hasSkill :Python , :MachineLearning , :NLP , :SQL , :Docker ;
+    :hasSkill :Leadership , :Communication ;
+    :hasDegree :IngenieurInfo1 ;
+    :hasExperience :Exp3 , :Exp4 .
+
+:IngenieurInfo1 rdf:type :Degree ;
+    :degreeName "Ingénieur Informatique" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2017 .
+
+:Exp3 rdf:type :Experience ;
+    :jobTitle "Data Scientist Senior" ;
+    :company "AI Solutions" ;
+    :duration 48 ;
+    :startYear 2020 ;
+    :endYear 2024 .
+
+:Exp4 rdf:type :Experience ;
+    :jobTitle "ML Engineer" ;
+    :company "StartupAI" ;
+    :duration 24 ;
+    :startYear 2018 ;
+    :endYear 2020 .
+
+:Candidate4 rdf:type :Person ;
+    :name "David Leroy" ;
+    :email "david.leroy@email.com" ;
+    :yearsOfExperience 2 ;
+    :hasSkill :HTML , :CSS , :JavaScript ;
+    :hasSkill :Communication ;
+    :hasDegree :DUTInfo1 ;
+    :hasExperience :Exp5 ;
+    :hasProfile :WebDeveloper .
+
+:DUTInfo1 rdf:type :Degree ;
+    :degreeName "DUT Informatique" ;
+    :degreeLevel "Bac+2" ;
+    :yearObtained 2022 .
+
+:Exp5 rdf:type :Experience ;
+    :jobTitle "Développeur Web Junior" ;
+    :company "Digital Studio" ;
+    :duration 24 ;
+    :startYear 2022 ;
+    :endYear 2024 .
+
+:Candidate5 rdf:type :Person ;
+    :name "Emma Bernard" ;
+    :email "emma.bernard@email.com" ;
+    :yearsOfExperience 4 ;
+    :hasSkill :Java , :Python , :SQL , :Docker , :Git ;
+    :hasSkill :TeamWork , :Leadership ;
+    :hasDegree :MasterInfo1 ;
+    :hasExperience :Exp6 ;
+    :hasProfile :BackendDeveloper .
+
+:MasterInfo1 rdf:type :Degree ;
+    :degreeName "Master Informatique" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2020 .
+
+:Exp6 rdf:type :Experience ;
+    :jobTitle "Développeur Backend" ;
+    :company "Enterprise Systems" ;
+    :duration 48 ;
+    :startYear 2020 ;
+    :endYear 2024 .
