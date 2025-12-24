@@ -137,7 +137,7 @@ Projet réalisé dans le cadre du module **Ingénierie des Connaissances et Web 
 
 ## 📄 Licence
 
-Projet académique - ENSA Agadir © 2024-2025
+Projet académique - ENSA Tétouan © 2024-2025
 
 ## 🙏 Remerciements
 
