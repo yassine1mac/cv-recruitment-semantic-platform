@@ -154,40 +154,75 @@ class RDFService:
         return skills
     
     def get_all_profiles(self) -> List[str]:
-        """Récupère tous les profils disponibles"""
+        """Récupère tous les profils disponibles (labels si dispo)"""
         query = f"""
         PREFIX : <{settings.CV_NAMESPACE}>
-        
-        SELECT DISTINCT ?profileName
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT DISTINCT ?profile ?label
         WHERE {{
             ?person a :Person ;
                     :hasProfile ?profile .
-            ?profile a ?profileType .
-            BIND(REPLACE(STR(?profileType), ".*#", "") AS ?profileName)
+            OPTIONAL {{ ?profile rdfs:label ?label . }}
         }}
         """
-        
-        results = self.graph.query(query)
-        return sorted([str(row.profileName) for row in results])
+
+        results = list(self.graph.query(query))
+
+        # group labels by profile URI
+        by_profile = {}
+        for row in results:
+            p = str(row.profile)
+            by_profile.setdefault(p, []).append(row.label if row.label else None)
+
+        profiles = []
+        for p, labels in by_profile.items():
+            labels = [l for l in labels if l]
+            chosen = None
+            for l in labels:
+                if getattr(l, "language", None) == "fr":
+                    chosen = str(l); break
+            if not chosen:
+                for l in labels:
+                    if getattr(l, "language", None) == "en":
+                        chosen = str(l); break
+            if not chosen:
+                chosen = p.split("#")[-1].split("/")[-1]
+            profiles.append(chosen)
+
+        return sorted(set(profiles))
     
     def _get_profile(self, person_uri: str) -> Optional[str]:
-        """Récupère le profil d'une personne"""
+        """Récupère le profil d'une personne (label si dispo, sinon nom local)"""
         query = f"""
         PREFIX : <{settings.CV_NAMESPACE}>
-        
-        SELECT ?profileType
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT ?profile ?label
         WHERE {{
             <{person_uri}> :hasProfile ?profile .
-            ?profile a ?profileType .
-            FILTER(?profileType != <http://www.w3.org/2002/07/owl#NamedIndividual>)
+            OPTIONAL {{ ?profile rdfs:label ?label . }}
         }}
         """
-        
-        results = list(self.graph.query(query))
-        if results:
-            profile_uri = str(results[0].profileType)
-            return profile_uri.split('#')[-1]
-        return None
+
+        rows = list(self.graph.query(query))
+        if not rows:
+            return None
+
+        profile_uri = str(rows[0].profile)
+
+        # choisir label fr puis en si présent
+        labels = [row.label for row in rows if row.label]
+        for l in labels:
+            if getattr(l, "language", None) == "fr":
+                return str(l)
+        for l in labels:
+            if getattr(l, "language", None) == "en":
+                return str(l)
+
+        # fallback : DataScientist / CloudEngineer ...
+        return profile_uri.split("#")[-1].split("/")[-1]
+
     
     def _get_skills(self, person_uri: str) -> List[Dict]:
         """Récupère les compétences d'une personne"""

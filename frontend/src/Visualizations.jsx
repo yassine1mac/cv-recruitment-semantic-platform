@@ -45,12 +45,23 @@ function Visualizations({ onClose }) {
       }));
       setSkillsData(skillsChart);
 
-      // 2. Distribution des profils
-      const profiles = Object.entries(statsData.profile_distribution).map(([name, count]) => ({
-        name: name === 'None' ? 'Non défini' : name,
+      // 2. Distribution des profils (calculée depuis les candidats)
+      const profileDistribution = {};
+      candidatesData.forEach(c => {
+        const p =
+          c.profile?.name ??      // si profile est un objet {name: "..."}
+          c.profile ??            // si profile est juste une string
+          'Non défini';
+
+        profileDistribution[p] = (profileDistribution[p] || 0) + 1;
+      });
+
+      const profiles = Object.entries(profileDistribution).map(([name, count]) => ({
+        name,
         value: count,
         percentage: ((count / statsData.total_candidates) * 100).toFixed(1)
       }));
+
       setProfilesData(profiles);
 
       // 3. Distribution par années d'expérience

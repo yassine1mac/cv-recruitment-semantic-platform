@@ -41,21 +41,56 @@
     rdfs:label "Profile"@en , "Profil"@fr ;
     rdfs:comment "Un profil professionnel (DataScientist, Developer, etc.)"@fr .
 
-:DataScientist rdf:type owl:Class ;
-    rdfs:subClassOf :Profile ;
+:DataScientist rdf:type owl:NamedIndividual , :Profile ;
     rdfs:label "Data Scientist"@en .
 
-:WebDeveloper rdf:type owl:Class ;
-    rdfs:subClassOf :Profile ;
+:WebDeveloper rdf:type owl:NamedIndividual , :Profile ;
     rdfs:label "Web Developer"@en , "Développeur Web"@fr .
 
-:BackendDeveloper rdf:type owl:Class ;
-    rdfs:subClassOf :Profile ;
+:BackendDeveloper rdf:type owl:NamedIndividual , :Profile ;
     rdfs:label "Backend Developer"@en .
 
-:FullStackDeveloper rdf:type owl:Class ;
-    rdfs:subClassOf :Profile ;
+:FullStackDeveloper rdf:type owl:NamedIndividual , :Profile ;
     rdfs:label "Full Stack Developer"@en .
+
+:DataEngineer rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "Data Engineer"@en , "Ingénieur Data"@fr .
+
+:MLEngineer rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "ML Engineer"@en , "Ingénieur Machine Learning"@fr .
+
+:DevOpsEngineer rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "DevOps Engineer"@en .
+
+:FrontendDeveloper rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "Frontend Developer"@en , "Développeur Frontend"@fr .
+
+:MobileDeveloper rdf:type :Profile ;
+    rdfs:label "Mobile Developer"@en , "Développeur Mobile"@fr .
+
+:CyberSecurityAnalyst rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "Cybersecurity Analyst"@en , "Analyste Cybersécurité"@fr .
+
+:CloudEngineer rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "Cloud Engineer"@en , "Ingénieur Cloud"@fr .
+
+:DatabaseAdministrator rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "Database Administrator"@en , "Administrateur Base de Données"@fr .
+
+:BusinessAnalyst rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "Business Analyst"@en , "Analyste Métier"@fr .
+
+:ProjectManager rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "Project Manager"@en , "Chef de Projet"@fr .
+
+:QAEngineer rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "QA Engineer"@en , "Ingénieur QA"@fr .
+
+:UIUXDesigner rdf:type owl:NamedIndividual , :Profile ;
+    rdfs:label "UI/UX Designer"@en , "Designer UI/UX"@fr .
+
+
+
 
 #################################################################
 #    Object Properties
@@ -210,6 +245,106 @@
 :Leadership rdf:type :SoftSkill ;
     :skillName "Leadership" .
 
+:PyTorch rdf:type :TechnicalSkill ;
+    :skillName "PyTorch" .
+
+:ScikitLearn rdf:type :TechnicalSkill ;
+    :skillName "scikit-learn" .
+
+:FastAPI rdf:type :TechnicalSkill ;
+    :skillName "FastAPI" .
+
+:Django rdf:type :TechnicalSkill ;
+    :skillName "Django" .
+
+:Flask rdf:type :TechnicalSkill ;
+    :skillName "Flask" .
+
+:PostgreSQL rdf:type :TechnicalSkill ;
+    :skillName "PostgreSQL" .
+
+:MongoDB rdf:type :TechnicalSkill ;
+    :skillName "MongoDB" .
+
+:Redis rdf:type :TechnicalSkill ;
+    :skillName "Redis" .
+
+:Linux rdf:type :TechnicalSkill ;
+    :skillName "Linux" .
+
+:Kubernetes rdf:type :TechnicalSkill ;
+    :skillName "Kubernetes" .
+
+:CI_CD rdf:type :TechnicalSkill ;
+    :skillName "CI/CD" .
+
+:AWS rdf:type :TechnicalSkill ;
+    :skillName "AWS" .
+
+:GCP rdf:type :TechnicalSkill ;
+    :skillName "Google Cloud Platform" .
+
+:Azure rdf:type :TechnicalSkill ;
+    :skillName "Microsoft Azure" .
+
+:PowerBI rdf:type :TechnicalSkill ;
+    :skillName "Power BI" .
+
+:Tableau rdf:type :TechnicalSkill ;
+    :skillName "Tableau" .
+
+:Spark rdf:type :TechnicalSkill ;
+    :skillName "Apache Spark" .
+
+:Airflow rdf:type :TechnicalSkill ;
+    :skillName "Apache Airflow" .
+
+:Kafka rdf:type :TechnicalSkill ;
+    :skillName "Apache Kafka" .
+
+:Terraform rdf:type :TechnicalSkill ;
+    :skillName "Terraform" .
+
+:SwaggerOpenAPI rdf:type :TechnicalSkill ;
+    :skillName "Swagger / OpenAPI" .
+
+:REST rdf:type :TechnicalSkill ;
+    :skillName "REST APIs" .
+
+:GraphQL rdf:type :TechnicalSkill ;
+    :skillName "GraphQL" .
+
+:Testing rdf:type :TechnicalSkill ;
+    :skillName "Software Testing" .
+
+:CyberSecurity rdf:type :TechnicalSkill ;
+    :skillName "Cybersecurity Basics" .
+
+
+:ProblemSolving rdf:type :SoftSkill ;
+    :skillName "Résolution de problèmes"@fr .
+
+:CriticalThinking rdf:type :SoftSkill ;
+    :skillName "Esprit critique"@fr .
+
+:Adaptability rdf:type :SoftSkill ;
+    :skillName "Adaptabilité"@fr .
+
+:TimeManagement rdf:type :SoftSkill ;
+    :skillName "Gestion du temps"@fr .
+
+:Creativity rdf:type :SoftSkill ;
+    :skillName "Créativité"@fr .
+
+:Initiative rdf:type :SoftSkill ;
+    :skillName "Prise d'initiative"@fr .
+
+:StressManagement rdf:type :SoftSkill ;
+    :skillName "Gestion du stress"@fr .
+
+:Networking rdf:type :TechnicalSkill ;
+    :skillName "Networking" .
+
 #################################################################
 #    Instances - Diplômes
 #################################################################
@@ -289,7 +424,8 @@
     :hasSkill :Python , :MachineLearning , :NLP , :SQL , :Docker ;
     :hasSkill :Leadership , :Communication ;
     :hasDegree :IngenieurInfo1 ;
-    :hasExperience :Exp3 , :Exp4 .
+    :hasExperience :Exp3 , :Exp4 ;
+    :hasProfile :DataScientist .
 
 :IngenieurInfo1 rdf:type :Degree ;
     :degreeName "Ingénieur Informatique" ;
@@ -352,4 +488,242 @@
     :company "Enterprise Systems" ;
     :duration 48 ;
     :startYear 2020 ;
+    :endYear 2024 .
+
+#################################################################
+#    Instances - Candidats (ajouts)
+#################################################################
+
+:Candidate6 rdf:type :Person ;
+    :name "Youssef El Amrani" ;
+    :email "youssef.elamrani@email.com" ;
+    :yearsOfExperience 6 ;
+    :hasSkill :Python , :SQL , :Spark , :Airflow , :Kafka , :PostgreSQL ;
+    :hasSkill :ProblemSolving , :TeamWork ;
+    :hasDegree :MasterDataEngineer1 ;
+    :hasExperience :Exp7 ;
+    :hasProfile :DataEngineer .
+
+:MasterDataEngineer1 rdf:type :Degree ;
+    :degreeName "Master Data Engineering" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2018 .
+
+:Exp7 rdf:type :Experience ;
+    :jobTitle "Data Engineer" ;
+    :company "DataWorks" ;
+    :duration 60 ;
+    :startYear 2019 ;
+    :endYear 2024 .
+
+
+:Candidate7 rdf:type :Person ;
+    :name "Sara Benali" ;
+    :email "sara.benali@email.com" ;
+    :yearsOfExperience 4 ;
+    :hasSkill :Docker , :Kubernetes , :Linux , :CI_CD , :Terraform , :AWS ;
+    :hasSkill :Adaptability , :TimeManagement ;
+    :hasDegree :IngenieurDevOps1 ;
+    :hasExperience :Exp8 ;
+    :hasProfile :DevOpsEngineer .
+
+:IngenieurDevOps1 rdf:type :Degree ;
+    :degreeName "Ingénieur Informatique - DevOps" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2020 .
+
+:Exp8 rdf:type :Experience ;
+    :jobTitle "DevOps Engineer" ;
+    :company "CloudOps" ;
+    :duration 48 ;
+    :startYear 2021 ;
+    :endYear 2024 .
+
+
+:Candidate8 rdf:type :Person ;
+    :name "Mehdi Oukassi" ;
+    :email "mehdi.oukassi@email.com" ;
+    :yearsOfExperience 5 ;
+    :hasSkill :GCP , :AWS , :Linux , :Docker , :Kubernetes , :Terraform ;
+    :hasSkill :Communication , :ProblemSolving ;
+    :hasDegree :MasterCloud1 ;
+    :hasExperience :Exp9 ;
+    :hasProfile :CloudEngineer .
+
+:MasterCloud1 rdf:type :Degree ;
+    :degreeName "Master Cloud Computing" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2019 .
+
+:Exp9 rdf:type :Experience ;
+    :jobTitle "Cloud Engineer" ;
+    :company "SkyTech" ;
+    :duration 60 ;
+    :startYear 2020 ;
+    :endYear 2024 .
+
+
+:Candidate9 rdf:type :Person ;
+    :name "Imane Lahlou" ;
+    :email "imane.lahlou@email.com" ;
+    :yearsOfExperience 3 ;
+    :hasSkill :JavaScript , :React , :HTML , :CSS , :REST ;
+    :hasSkill :Creativity , :TeamWork ;
+    :hasDegree :LicenceWeb1 ;
+    :hasExperience :Exp10 ;
+    :hasProfile :FrontendDeveloper .
+
+:LicenceWeb1 rdf:type :Degree ;
+    :degreeName "Licence Développement Web" ;
+    :degreeLevel "Bac+3" ;
+    :yearObtained 2021 .
+
+:Exp10 rdf:type :Experience ;
+    :jobTitle "Frontend Developer" ;
+    :company "UI Studio" ;
+    :duration 36 ;
+    :startYear 2022 ;
+    :endYear 2024 .
+
+
+:Candidate10 rdf:type :Person ;
+    :name "Omar Raji" ;
+    :email "omar.raji@email.com" ;
+    :yearsOfExperience 2 ;
+    :hasSkill :Testing , :REST , :PostgreSQL , :Git ;
+    :hasSkill :CriticalThinking , :TimeManagement ;
+    :hasDegree :DUTQA1 ;
+    :hasExperience :Exp11 ;
+    :hasProfile :QAEngineer .
+
+:DUTQA1 rdf:type :Degree ;
+    :degreeName "DUT Informatique - Tests" ;
+    :degreeLevel "Bac+2" ;
+    :yearObtained 2022 .
+
+:Exp11 rdf:type :Experience ;
+    :jobTitle "QA Engineer" ;
+    :company "QualityLab" ;
+    :duration 24 ;
+    :startYear 2023 ;
+    :endYear 2024 .
+
+
+:Candidate11 rdf:type :Person ;
+    :name "Nadia El Fassi" ;
+    :email "nadia.elfassi@email.com" ;
+    :yearsOfExperience 6 ;
+    :hasSkill :SQL , :PostgreSQL , :MongoDB , :Redis , :Linux ;
+    :hasSkill :ProblemSolving , :StressManagement ;
+    :hasDegree :MasterDBA1 ;
+    :hasExperience :Exp12 ;
+    :hasProfile :DatabaseAdministrator .
+
+:MasterDBA1 rdf:type :Degree ;
+    :degreeName "Master Bases de Données" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2018 .
+
+:Exp12 rdf:type :Experience ;
+    :jobTitle "Database Administrator" ;
+    :company "FinData" ;
+    :duration 72 ;
+    :startYear 2019 ;
+    :endYear 2024 .
+
+
+:Candidate12 rdf:type :Person ;
+    :name "Hicham Azzouzi" ;
+    :email "hicham.azzouzi@email.com" ;
+    :yearsOfExperience 4 ;
+    :hasSkill :Python , :ScikitLearn , :MachineLearning , :SQL , :PowerBI ;
+    :hasSkill :Communication , :CriticalThinking ;
+    :hasDegree :MasterML1 ;
+    :hasExperience :Exp13 ;
+    :hasProfile :MLEngineer .
+
+:MasterML1 rdf:type :Degree ;
+    :degreeName "Master Machine Learning" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2020 .
+
+:Exp13 rdf:type :Experience ;
+    :jobTitle "ML Engineer" ;
+    :company "ML Factory" ;
+    :duration 48 ;
+    :startYear 2021 ;
+    :endYear 2024 .
+
+
+:Candidate13 rdf:type :Person ;
+    :name "Salma Kharbouch" ;
+    :email "salma.kharbouch@email.com" ;
+    :yearsOfExperience 3 ;
+    :hasSkill :CyberSecurity , :Linux , :Networking , :Git ;
+    :hasSkill :CriticalThinking , :StressManagement ;
+    :hasDegree :LicenceCyber1 ;
+    :hasExperience :Exp14 ;
+    :hasProfile :CyberSecurityAnalyst .
+
+# NOTE: Networking n'existe pas encore chez vous.
+# Si vous voulez éviter toute erreur, supprimez ":Networking" ci-dessus
+# ou ajoutez la compétence suivante dans votre section skills :
+# :Networking rdf:type :TechnicalSkill ; :skillName "Networking" .
+
+:LicenceCyber1 rdf:type :Degree ;
+    :degreeName "Licence Cybersécurité" ;
+    :degreeLevel "Bac+3" ;
+    :yearObtained 2021 .
+
+:Exp14 rdf:type :Experience ;
+    :jobTitle "Cybersecurity Analyst" ;
+    :company "SecureIT" ;
+    :duration 36 ;
+    :startYear 2022 ;
+    :endYear 2024 .
+
+
+:Candidate14 rdf:type :Person ;
+    :name "Kenza Amrani" ;
+    :email "kenza.amrani@email.com" ;
+    :yearsOfExperience 5 ;
+    :hasSkill :PowerBI , :Tableau , :SQL , :PostgreSQL ;
+    :hasSkill :Communication , :TimeManagement ;
+    :hasDegree :MasterBA1 ;
+    :hasExperience :Exp15 ;
+    :hasProfile :BusinessAnalyst .
+
+:MasterBA1 rdf:type :Degree ;
+    :degreeName "Master Business Analytics" ;
+    :degreeLevel "Bac+5" ;
+    :yearObtained 2019 .
+
+:Exp15 rdf:type :Experience ;
+    :jobTitle "Business Analyst" ;
+    :company "Consulting Group" ;
+    :duration 60 ;
+    :startYear 2020 ;
+    :endYear 2024 .
+
+
+:Candidate15 rdf:type :Person ;
+    :name "Rania El Idrissi" ;
+    :email "rania.elidrissi@email.com" ;
+    :yearsOfExperience 4 ;
+    :hasSkill :React , :HTML , :CSS , :JavaScript ;
+    :hasSkill :Creativity , :Communication ;
+    :hasDegree :LicenceDesign1 ;
+    :hasExperience :Exp16 ;
+    :hasProfile :UIUXDesigner .
+
+:LicenceDesign1 rdf:type :Degree ;
+    :degreeName "Licence Design UI/UX" ;
+    :degreeLevel "Bac+3" ;
+    :yearObtained 2020 .
+
+:Exp16 rdf:type :Experience ;
+    :jobTitle "UI/UX Designer" ;
+    :company "DesignHub" ;
+    :duration 48 ;
+    :startYear 2021 ;
     :endYear 2024 .
